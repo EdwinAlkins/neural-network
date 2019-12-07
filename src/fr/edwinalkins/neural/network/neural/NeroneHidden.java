@@ -12,7 +12,6 @@ public class NeroneHidden extends Nerone{
 		this.p = 0d;
 		for(Link link : this.linkG) {
 			this.p += link.getCurrent().getS()*link.getW();
-			//this.p += val*link.getW();
 		}
 		calculSignal();
 	}
@@ -22,14 +21,14 @@ public class NeroneHidden extends Nerone{
 		super.calculErreur();
 		double tmpErr = 0d;
 		for(Link link : this.linkD) {
-			tmpErr += link.getNext().e * link.getW();
+			tmpErr += link.getNext().getE() * link.getW();
 		}
 		this.e *= tmpErr;
 	}
 	
 	public void correction() {
 		for(Link link : this.linkG) {
-			link.setW(link.getW()+this.e*link.getCurrent().s);
+			link.setW(link.getW()+this.e*link.getCurrent().getS());
 		}
 	}
 }

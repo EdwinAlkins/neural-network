@@ -19,7 +19,7 @@ public class CoucheOutput extends Couche{
 		this.err = 0.5;
 		double tmpErr = 0;
 		for(NeroneOutput nerone : this.getNeronesOutput()) {
-			tmpErr += Math.pow(nerone.getdistance(),2);
+			tmpErr += Math.pow(nerone.getE(),2);
 		}
 		this.err *= tmpErr;
 	}
@@ -45,7 +45,7 @@ public class CoucheOutput extends Couche{
 		for(Nerone n : nerones) {
 			buff.append("[p:"+n.getP()).append(",s:"+n.getS())
 			.append(",e:"+n.getE()).append(",o:"+((NeroneOutput)n).getOutput())
-			.append(",d:"+((NeroneOutput)n).getdistance()+"]\n");
+			.append(",d:"+((NeroneOutput)n).getE()+"]\n");
 		}
 		return buff.toString();
 	}
